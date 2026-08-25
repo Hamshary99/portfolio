@@ -1,7 +1,7 @@
 # Design Spec — FIFA Player Card Portfolio
 
 Hand this file to your coding agent ALONGSIDE the working HTML file
-(mohammed-bahey-player-card.html). Tell it: "Port this exact design into
+(index.html). Tell it: "Port this exact design into
 [Next.js / your stack]. This spec documents the source of truth — match
 it precisely rather than reinterpreting."
 

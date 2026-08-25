@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Bahey El-Deen — Player Card</title>
+<meta name="description" content="Backend-first engineer — Node.js, TypeScript, fintech microservices. Portfolio built as a FIFA Ultimate Team player card.">
+<meta name="theme-color" content="#060B18">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M2 2h28v22L16 31 2 24Z' fill='%23C89A4E'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' text-anchor='middle' fill='%23140F06'%3E76%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mohammed Bahey El-Deen — Player Card">
+<meta property="og:description" content="Backend-first engineer — Node.js, TypeScript, fintech microservices. Portfolio built as a FIFA Ultimate Team player card.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mohammed Bahey El-Deen — Player Card">
+<meta name="twitter:description" content="Backend-first engineer — Node.js, TypeScript, fintech microservices. Portfolio built as a FIFA Ultimate Team player card.">
+<!-- og:image must be an absolute URL. This assumes GitHub Pages for
+     Hamshary99/portfolio; change the origin here, in og:url and in the
+     JSON-LD below if you deploy somewhere else. -->
+<meta property="og:url" content="https://hamshary99.github.io/portfolio/">
+<meta property="og:image" content="https://hamshary99.github.io/portfolio/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="FIFA-style player card for Mohammed Bahey El-Deen, rated 76 CAM">
+<meta name="twitter:image" content="https://hamshary99.github.io/portfolio/og-card.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mohammed Bahey El-Deen",
+  "jobTitle": "Backend Software Engineer",
+  "description": "Backend-first full stack engineer specializing in Node.js/TypeScript microservices, distributed systems and event-driven architecture.",
+  "url": "https://hamshary99.github.io/portfolio/",
+  "image": "https://hamshary99.github.io/portfolio/og-card.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cairo",
+    "addressCountry": "EG"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Menoufia University"
+  },
+  "knowsLanguage": ["ar", "en"],
+  "knowsAbout": [
+    "Node.js", "TypeScript", "JavaScript", "Python", "NestJS", "Express.js",
+    "Microservices", "RabbitMQ", "PostgreSQL", "MongoDB", "Redis", "TypeORM",
+    "Docker", "AWS Lambda", "React", "Clean Architecture",
+    "Performance Optimization", "Load Balancing", "Query Optimization"
+  ],
+  "sameAs": [
+    "https://github.com/Hamshary99",
+    "https://linkedin.com/in/mohammed-bahey-el-deen656095198"
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Manrope:wght@400;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#060B18;
+    --bg-panel:#0B1424;
+    --bg-panel-2:#0F1B30;
+    --card-1:#0D2038;
+    --cyan:#38F2C0;
+    --pink:#FF3D81;
+    --gold:#FFC857;
+    --ink:#EAF2FF;
+    --dim:#7E93B8;
+    --line:rgba(255,255,255,0.08);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-deep);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--cyan);color:#04140F;}
+
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .display{font-family:'Teko',sans-serif;font-weight:600;letter-spacing:0.01em;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:6rem 1.5rem 4rem;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 15%, rgba(56,242,192,0.10), transparent 60%),
+      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,61,129,0.08), transparent 60%),
+      var(--bg-deep);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 75%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:0.9rem;
+    z-index:1;
+    display:flex; align-items:center; gap:0.6rem;
+  }
+  .eyebrow::before, .eyebrow::after{
+    content:"";
+    width:24px; height:1px;
+    background:var(--gold);
+    opacity:0.6;
+  }
+  .week-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    color:var(--dim);
+    text-align:center;
+    z-index:1;
+    margin:0 0 2.4rem;
+  }
+  .hero h1{
+    font-family:'Teko',sans-serif;
+    font-weight:700;
+    font-size:clamp(2.4rem, 7vw, 4.6rem);
+    line-height:0.95;
+    text-align:center;
+    margin:0 0 0.5rem;
+    z-index:1;
+    letter-spacing:0.01em;
+  }
+  .hero h1 span{color:var(--cyan);}
+  .hero .sub{
+    color:var(--dim);
+    font-size:0.98rem;
+    text-align:center;
+    max-width:34rem;
+    margin:0 0 3rem;
+    z-index:1;
+    line-height:1.55;
+  }
+
+  /* ---------- CARD ---------- */
+  .card-stage{
+    perspective:1400px;
+    z-index:1;
+  }
+  .card{
+    position:relative;
+    width:300px;
+    height:472px;
+    transform-style:preserve-3d;
+    transition:transform 0.15s ease-out;
+    /* tilt is a hover effect - clicking does nothing, so no pointer cursor */
+  }
+  .card-face{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(160deg, #E7C077 0%, #C89A4E 30%, #A87B33 62%, #7C5A28 100%);
+    border:1px solid rgba(255,235,190,0.6);
+    clip-path:polygon(6% 0%, 94% 0%, 100% 7%, 100% 86%, 50% 100%, 0% 86%, 0% 7%);
+    box-shadow:
+      0 30px 60px -20px rgba(0,0,0,0.85),
+      0 0 44px -8px rgba(255,200,87,0.3);
+    overflow:hidden;
+    padding:18px 0 0;
+    display:flex;
+    flex-direction:column;
+  }
+  .card-face::before{
+    /* brushed gold foil diagonal texture */
+    content:"";
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(
+      124deg,
+      rgba(255,255,255,0.10) 0px,
+      rgba(255,255,255,0.10) 2px,
+      transparent 2px,
+      transparent 9px
+    );
+    pointer-events:none;
+  }
+  .sheen{
+    position:absolute; inset:0;
+    background:linear-gradient(115deg, transparent 40%, rgba(255,230,160,0.28) 48%, transparent 56%);
+    background-size:250% 250%;
+    background-position:-100% -100%;
+    transition:background-position 0.6s ease;
+    pointer-events:none;
+    mix-blend-mode:overlay;
+  }
+  .card:hover .sheen{ background-position:100% 100%; }
+
+  /* sparkle field + shining outer glow */
+  .card-stage{ position:relative; }
+  .card-stage::before{
+    content:"";
+    position:absolute;
+    top:50%; left:50%;
+    width:420px; height:420px;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(255,200,87,0.22), transparent 70%);
+    animation:coreglow 3.2s ease-in-out infinite;
+    pointer-events:none;
+    z-index:0;
+  }
+  @keyframes coreglow{
+    0%,100%{ opacity:0.5; transform:translate(-50%,-50%) scale(0.92); }
+    50%{ opacity:1; transform:translate(-50%,-50%) scale(1.08); }
+  }
+  .sparkles{
+    position:absolute; inset:0;
+    pointer-events:none;
+    z-index:3;
+  }
+  .spark{
+    position:absolute;
+    color:var(--gold);
+    text-shadow:0 0 8px rgba(255,200,87,0.9), 0 0 16px rgba(255,200,87,0.5);
+    animation:twinkle 2.6s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{ opacity:0; transform:scale(0.5) rotate(0deg); }
+    50%{ opacity:1; transform:scale(1) rotate(20deg); }
+  }
+  .dot-spark{
+    position:absolute;
+    width:4px; height:4px;
+    background:var(--gold);
+    border-radius:50%;
+    box-shadow:0 0 6px 2px rgba(255,200,87,0.8);
+    animation:twinkle 2.2s ease-in-out infinite;
+  }
+
+  .card-top{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    position:relative; z-index:1;
+    padding:0 18px 6px;
+  }
+  .rating-block{ text-align:left; line-height:0.88; }
+  .rating-block .ovr{
+    font-family:'Teko',sans-serif; font-weight:700;
+    font-size:2.6rem; color:#1A1206;
+  }
+  .rating-block .pos{
+    font-family:'Teko',sans-serif; font-weight:600;
+    font-size:1.15rem; color:#1A1206;
+    letter-spacing:0.04em;
+    margin-bottom:6px;
+  }
+  .pot-tag{
+    display:inline-block;
+    margin-bottom:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.06em;
+    color:#2B1D07;
+    background:rgba(255,255,255,0.35);
+    border:1px solid rgba(43,29,7,0.35);
+    border-radius:20px;
+    padding:1px 7px;
+  }
+  .flag-crest{
+    display:flex; flex-direction:column; align-items:flex-start; gap:8px;
+    margin-top:12px;
+  }
+  .flag-crest .flag{ display:block; width:30px; height:20px; border-radius:2px; }
+  .crest{
+    width:36px; height:36px;
+    border-radius:6px;
+    background:linear-gradient(145deg, #2B1D07, #17100A);
+    border:1px solid rgba(255,235,190,0.6);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem; font-weight:700; color:#FFF8E7;
+  }
+
+  .photo-lg{
+    position:relative;
+    width:132px; height:auto;
+    align-self:flex-end;
+    margin-right:-8px;
+    display:flex; align-items:flex-end; justify-content:center;
+  }
+  .avatar{
+    width:126px; height:170px;
+    border-radius:16px 16px 0 0;
+    background:radial-gradient(circle at 40% 25%, #2A2210, #0A0906 78%);
+    border:2px solid rgba(255,200,87,0.55);
+    border-bottom:none;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Teko',sans-serif; font-weight:700;
+    font-size:2.6rem; color:var(--gold);
+    box-shadow:0 0 30px -6px rgba(255,200,87,0.45);
+    position:relative;
+  }
+  .avatar::after{
+    content:"";
+    position:absolute; inset:-14px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(255,200,87,0.35), transparent 70%);
+    animation:corepulse 2.6s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes corepulse{
+    0%,100%{ opacity:0.4; transform:scale(0.9); }
+    50%{ opacity:0.9; transform:scale(1.15); }
+  }
+
+  .name-band{
+    position:relative; z-index:1;
+    background:linear-gradient(180deg, #201808 0%, #0A0805 100%);
+    text-align:center;
+    padding:9px 10px;
+    margin-top:14px;
+  }
+  .name-band .nm{
+    font-family:'Teko',sans-serif; font-weight:600;
+    font-size:1.55rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:#F3DFA8;
+  }
+
+  .stats-plate{
+    position:relative; z-index:1;
+    background:
+      repeating-linear-gradient(124deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 9px),
+      linear-gradient(180deg, #14100A 0%, #0A0805 100%);
+    padding:12px 26px 14px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .stat-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px 24px;
+    justify-items:center;
+    margin-top:6px;
+  }
+  .stat{
+    display:flex; align-items:baseline; justify-content:center; gap:9px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:1.32rem;
+  }
+  .stat .val{ color:#F3DFA8; font-weight:700; }
+  .stat .lbl{ color:#F3DFA8; opacity:0.92; letter-spacing:0.04em; font-weight:600; }
+
+  .chem-callout{
+    position:relative; z-index:1;
+    margin:1.6rem auto 0;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:linear-gradient(145deg, #2B1D07, #17100A);
+    border:1px solid rgba(255,235,190,0.75);
+    border-radius:8px;
+    padding:8px 20px;
+    box-shadow:0 6px 18px -6px rgba(0,0,0,0.5), 0 0 20px -6px rgba(255,200,87,0.35);
+  }
+  .chem-callout .chem-icon{ font-size:1.1rem; color:var(--gold); line-height:1; }
+  .chem-callout .chem-label-lg{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    font-size:0.85rem;
+    color:#FFF8E7;
+    letter-spacing:0.14em;
+  }
+  .chem-callout .chem-cap{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.66rem;
+    color:var(--dim);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:1px;
+  }
+
+  .card-hint{
+    z-index:1;
+    margin-top:1.4rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem;
+    color:var(--dim);
+    letter-spacing:0.06em;
+    text-align:center;
+  }
+
+  .scroll-cue{
+    position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+    z-index:1;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    color:var(--dim);
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.62rem;
+    letter-spacing:0.2em;
+  }
+  .scroll-cue .line{ width:1px; height:26px; background:linear-gradient(var(--cyan), transparent); animation:pulse 1.8s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:0.3;} 50%{opacity:1;} }
+
+  /* ---------- SECTIONS ---------- */
+  section.panel{
+    max-width:840px;
+    margin:0 auto;
+    padding:5rem 1.5rem;
+    border-top:1px solid var(--line);
+  }
+  .section-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--cyan);
+    margin-bottom:0.6rem;
+  }
+  .section-title{
+    font-family:'Teko',sans-serif; font-weight:600;
+    font-size:clamp(1.8rem,4vw,2.6rem);
+    margin:0 0 1.6rem;
+  }
+
+  .report-text{
+    color:#C7D6EE;
+    font-size:1.02rem;
+    line-height:1.75;
+    max-width:640px;
+  }
+  .report-text strong{ color:var(--ink); }
+
+  /* radar / pizza chart */
+  .radar-wrap{
+    display:flex;
+    justify-content:center;
+    margin:2.6rem 0 1rem;
+  }
+  .radar-box{
+    background:var(--bg-panel-2);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:1.6rem 1.6rem 1.2rem;
+    width:100%;
+    max-width:420px;
+  }
+  .radar-box .radar-title{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--dim);
+    text-align:center;
+    margin-bottom:0.4rem;
+  }
+  #radar text{
+    font-family:'JetBrains Mono',monospace;
+    fill:var(--ink);
+  }
+  #radar .grid-line{ stroke:rgba(255,255,255,0.14); stroke-width:1; fill:none; }
+  #radar .axis-line{ stroke:rgba(255,255,255,0.10); stroke-width:1; }
+  #radar .stat-poly{ fill:rgba(56,242,192,0.16); stroke:var(--cyan); stroke-width:2; stroke-linejoin:round; }
+  #radar .stat-point{ fill:var(--gold); }
+  #radar .lbl-tag{ font-size:10.5px; fill:var(--dim); letter-spacing:0.05em; }
+  #radar .lbl-val{ font-size:11px; fill:var(--gold); font-weight:700; }
+
+  /* career path / loan spells */
+  .fixture{
+    display:flex; align-items:center; gap:1.1rem;
+    padding:1.1rem 0;
+    border-bottom:1px solid var(--line);
+  }
+  .fixture:last-child{ border-bottom:none; }
+  .fixture .stamp{
+    flex:none;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.6rem;
+    letter-spacing:0.08em;
+    color:var(--pink);
+    border:1px solid rgba(255,61,129,0.45);
+    padding:3px 8px;
+    border-radius:4px;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .fixture .info{ flex:1; }
+  .fixture .club{
+    font-family:'Teko',sans-serif; font-weight:600;
+    font-size:1.25rem; color:var(--ink);
+    margin-bottom:2px;
+  }
+  .fixture .meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem; color:var(--dim);
+  }
+  .fixture .desc{
+    margin-top:6px; color:#B9C8E2; font-size:0.9rem; line-height:1.6;
+  }
+
+  /* highlight reel / projects */
+  .reel{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1rem;
+  }
+  .match-card{
+    background:var(--bg-panel-2);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:1.4rem 1.5rem;
+    transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .match-card:hover{ border-color:rgba(56,242,192,0.4); transform:translateY(-2px); }
+  .match-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:0.5rem; gap:1rem;
+  }
+  .match-title{
+    font-family:'Teko',sans-serif; font-weight:600;
+    font-size:1.4rem; color:var(--ink);
+  }
+  .match-score{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem; color:var(--gold);
+    white-space:nowrap;
+  }
+  .match-desc{ color:#B9C8E2; font-size:0.9rem; line-height:1.65; margin:0 0 0.8rem; }
+  .formation{
+    display:flex; flex-wrap:wrap; gap:6px;
+  }
+  .chip{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.65rem;
+    color:var(--cyan);
+    border:1px solid rgba(56,242,192,0.3);
+    background:rgba(56,242,192,0.06);
+    padding:3px 8px;
+    border-radius:20px;
+  }
+
+  /* project links */
+  .match-links{ display:flex; flex-wrap:wrap; gap:1.2rem; margin-top:0.95rem; }
+  .match-links a{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--cyan); text-decoration:none;
+    border-bottom:1px solid rgba(56,242,192,0.35);
+    padding-bottom:2px;
+    transition:color 0.2s ease, border-color 0.2s ease;
+  }
+  .match-links a::after{ content:" \2192"; }
+  .match-links a:hover{ color:var(--ink); border-color:var(--ink); }
+  .match-links a:focus-visible{ outline:2px solid var(--cyan); outline-offset:3px; }
+
+  /* CV download */
+  .cv-btn{
+    display:inline-flex; align-items:center; gap:11px;
+    margin:1.8rem 0 0.4rem;
+    background:linear-gradient(145deg,#2B1D07,#17100A);
+    border:1px solid rgba(255,200,87,0.55);
+    border-radius:8px;
+    padding:13px 22px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--gold); text-decoration:none;
+    box-shadow:0 6px 18px -6px rgba(0,0,0,0.5), 0 0 20px -8px rgba(255,200,87,0.35);
+    transition:transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .cv-btn:hover{
+    transform:translateY(-2px);
+    border-color:var(--gold);
+    box-shadow:0 10px 24px -8px rgba(0,0,0,0.6), 0 0 28px -8px rgba(255,200,87,0.5);
+  }
+  .cv-btn:focus-visible{ outline:2px solid var(--cyan); outline-offset:4px; }
+  .cv-btn .cv-meta{
+    color:var(--dim); letter-spacing:0.08em; font-size:0.66rem;
+  }
+
+  /* traits */
+  .traits{ display:flex; flex-wrap:wrap; gap:10px; }
+  .trait{
+    display:flex; align-items:center; gap:8px;
+    background:var(--bg-panel-2);
+    border:1px solid var(--line);
+    border-radius:30px;
+    padding:8px 14px 8px 10px;
+    font-size:0.85rem;
+    color:var(--ink);
+  }
+  .trait .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 8px 1px rgba(255,200,87,0.6);
+  }
+
+  /* squad sheet (hard tech stack) */
+  .stack{ margin-top:2.2rem; display:grid; gap:0.85rem; }
+  .stack-row{
+    display:grid;
+    grid-template-columns:minmax(120px,150px) 1fr;
+    gap:0.6rem 1.2rem;
+    align-items:baseline;
+    padding-bottom:0.85rem;
+    border-bottom:1px solid var(--line);
+  }
+  .stack-row:last-child{ border-bottom:none; padding-bottom:0; }
+  .stack-k{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--dim);
+  }
+  .stack-v{ color:#C7D6EE; font-size:0.94rem; line-height:1.6; }
+  @media (max-width:560px){
+    .stack-row{ grid-template-columns:1fr; gap:0.25rem; }
+  }
+
+  /* replay the pack */
+  .replay-wrap{ margin-top:2.6rem; }
+  .replay-btn{
+    background:none;
+    border:1px solid rgba(255,200,87,0.4);
+    border-radius:30px;
+    padding:9px 20px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.66rem; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--gold); cursor:pointer;
+    transition:border-color 0.2s ease, background 0.2s ease;
+  }
+  .replay-btn:hover{ border-color:var(--gold); background:rgba(255,200,87,0.08); }
+  .replay-btn:focus-visible{ outline:2px solid var(--cyan); outline-offset:3px; }
+  /* the intro does not run under reduced motion, so do not offer a replay */
+  @media (prefers-reduced-motion: reduce){ .replay-wrap{ display:none; } }
+
+  /* footer / agent */
+  footer{
+    max-width:840px;
+    margin:0 auto;
+    padding:5rem 1.5rem 6rem;
+    border-top:1px solid var(--line);
+  }
+  .status-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem; letter-spacing:0.08em;
+    color:var(--cyan);
+    border:1px solid rgba(56,242,192,0.4);
+    border-radius:30px;
+    padding:6px 14px;
+    margin-bottom:1.8rem;
+  }
+  .status-badge .dot{
+    width:7px; height:7px; border-radius:50%; background:var(--cyan);
+    box-shadow:0 0 8px 2px rgba(56,242,192,0.7);
+    animation:blip 1.6s ease-in-out infinite;
+  }
+  @keyframes blip{ 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+
+  .agent-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:1.4rem;
+    margin-top:1rem;
+  }
+  .agent-item .k{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--dim); margin-bottom:4px;
+  }
+  .agent-item a, .agent-item .v{
+    color:var(--ink);
+    text-decoration:none;
+    font-size:0.98rem;
+    border-bottom:1px solid transparent;
+    transition:border-color 0.2s ease, color 0.2s ease;
+  }
+  .agent-item a:hover{ color:var(--cyan); border-color:var(--cyan); }
+
+  .foot-note{
+    margin-top:3.5rem;
+    color:var(--dim);
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.03em;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+
+  @media print{
+    /* recruiters print. Flip to ink-on-paper and drop the decoration. */
+    .pack-scene, .sparkles, .scroll-cue, .card-hint,
+    .replay-wrap, .cv-btn, .pack-rays{ display:none !important; }
+    html, body{ background:#fff !important; color:#111 !important; }
+    .hero{
+      background:#fff !important; min-height:auto !important;
+      padding:0 0 1rem !important;
+    }
+    .hero::before, .card-stage::before, .avatar::after{ display:none !important; }
+    .hero h1, .section-title, .match-title, .fixture .club,
+    .agent-item .v, .agent-item a{ color:#111 !important; }
+    .hero h1 span{ color:#8A6A1F !important; }
+    .hero .sub, .report-text, .match-desc, .fixture .desc, .stack-v{ color:#333 !important; }
+    .section-tag, .week-tag, .fixture .meta, .agent-item .k,
+    .stack-k, .foot-note, .radar-title{ color:#555 !important; }
+    section.panel, footer{
+      border-color:#CCC !important; padding:1.4rem 0 !important;
+      max-width:100% !important; break-inside:avoid;
+    }
+    .match-card, .trait, .radar-box{
+      background:#fff !important; border-color:#BBB !important; break-inside:avoid;
+    }
+    .chip, .status-badge{ color:#444 !important; border-color:#BBB !important; }
+    .card-stage{ zoom:0.62; }
+    /* a printed link is useless without its URL */
+    .match-links a::after,
+    .agent-item a[href^="http"]::after{
+      content:" (" attr(href) ")";
+      font-size:0.8em; color:#555; letter-spacing:0;
+    }
+    a{ text-decoration:underline; }
+  }
+
+  @media (max-width:520px){
+    .card-stage{ zoom:0.88; }
+  }
+  @media (max-width:360px){
+    .card-stage{ zoom:0.76; }
+  }
+
+  /* ---------- PACK OPENING (FIFA 15 homage) ---------- */
+  /* Sequence: sealed pack -> shake -> burst of light + shards -> card flips in -> sheen.
+     FIFA 15 predates the FIFA 17+ "walkout", so there is deliberately no player
+     silhouette here: the light clears and the card itself is the payoff. */
+
+  .pack-scene{
+    position:fixed; inset:0; z-index:60;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:2.2rem;
+    overflow:hidden;
+    transition:opacity 0.6s ease, visibility 0.6s;
+  }
+  /* JS adds .pack-active to <body>; without JS the scene never gates the page. */
+  body:not(.pack-active) .pack-scene{ display:none; }
+  .pack-scene.is-dismissed{ opacity:0; visibility:hidden; pointer-events:none; }
+  body.pack-active{ overflow:hidden; }
+
+  .pack-bg{
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 55% 45% at 50% 46%, rgba(255,200,87,0.12), transparent 70%),
+      radial-gradient(ellipse 90% 60% at 50% 100%, rgba(56,242,192,0.05), transparent 60%),
+      #04070F;
+    transition:opacity 0.55s ease;
+  }
+  .pack-rays{
+    position:absolute; top:50%; left:50%;
+    width:150vmax; height:150vmax;
+    transform:translate(-50%,-50%);
+    background:repeating-conic-gradient(from 0deg,
+      rgba(255,200,87,0.10) 0deg 3deg, transparent 3deg 22deg,
+      rgba(255,200,87,0.06) 22deg 25deg, transparent 25deg 45deg);
+    -webkit-mask-image:radial-gradient(circle at 50% 50%, black 4%, transparent 55%);
+    mask-image:radial-gradient(circle at 50% 50%, black 4%, transparent 55%);
+    animation:rays-spin 40s linear infinite;
+    transition:opacity 0.5s ease;
+    pointer-events:none;
+  }
+  @keyframes rays-spin{ to{ transform:translate(-50%,-50%) rotate(360deg); } }
+
+  /* the light clears, handing the page back underneath */
+  .pack-scene.is-clearing .pack-bg,
+  .pack-scene.is-clearing .pack-rays{ opacity:0; }
+  .pack-scene.is-clearing .pack-wrap,
+  .pack-scene.is-clearing .pack-skip{
+    opacity:0; pointer-events:none; transition:opacity 0.3s ease;
+  }
+
+  .pack-wrap{
+    position:relative; z-index:1;
+    display:flex; flex-direction:column; align-items:center; gap:1.5rem;
+  }
+  .pack{
+    position:relative;
+    width:230px; height:310px;
+    border:0; border-radius:12px;
+    background:linear-gradient(160deg, #F0CE8B 0%, #D2A75B 28%, #A87B33 60%, #6E4F22 100%);
+    box-shadow:
+      0 34px 64px -18px rgba(0,0,0,0.9),
+      0 0 70px -12px rgba(255,200,87,0.5),
+      inset 0 1px 0 rgba(255,255,255,0.45);
+    cursor:pointer;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.75rem;
+    animation:pack-float 3.6s ease-in-out infinite;
+    transform-origin:50% 60%;
+  }
+  .pack::before{ /* foil weave - same 124deg as the card body */
+    content:""; position:absolute; inset:0; border-radius:12px;
+    background:repeating-linear-gradient(124deg,
+      rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.12) 2px,
+      transparent 2px, transparent 9px);
+    pointer-events:none;
+  }
+  .pack::after{ /* perforated tear strip */
+    content:""; position:absolute; left:0; right:0; top:26px; height:2px;
+    background:repeating-linear-gradient(90deg,
+      rgba(60,40,10,0.5) 0 6px, transparent 6px 12px);
+  }
+  @keyframes pack-float{
+    0%,100%{ transform:translateY(0) rotate(-1deg); }
+    50%{ transform:translateY(-12px) rotate(1deg); }
+  }
+  .pack-badge{
+    font-family:'Teko',sans-serif; font-weight:700;
+    font-size:2.1rem; line-height:1; color:#231703;
+    letter-spacing:0.04em; z-index:1;
+  }
+  .pack-sub{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:#3A2708; z-index:1;
+  }
+  .pack-crest{
+    width:54px; height:54px; border-radius:8px; z-index:1;
+    background:linear-gradient(145deg,#2B1D07,#17100A);
+    border:1px solid rgba(255,235,190,0.65);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace; font-weight:700;
+    font-size:0.85rem; color:#FFF8E7;
+  }
+  .pack-prompt{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem; letter-spacing:0.24em; text-transform:uppercase;
+    color:var(--gold); z-index:1; min-height:1em;
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  .pack-skip{
+    position:absolute; bottom:2.2rem; left:50%; transform:translateX(-50%);
+    background:none; border:1px solid rgba(255,255,255,0.18);
+    border-radius:30px; padding:7px 18px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--dim); cursor:pointer; z-index:2;
+    transition:color 0.2s ease, border-color 0.2s ease;
+  }
+  .pack-skip:hover{ color:var(--ink); border-color:rgba(255,255,255,0.4); }
+  .pack:focus-visible, .pack-skip:focus-visible{ outline:2px solid var(--cyan); outline-offset:4px; }
+
+  .pack.is-shaking{ animation:pack-shake 0.5s ease-in-out; }
+  @keyframes pack-shake{
+    0%,100%{ transform:translate(0) rotate(0deg); }
+    12%{ transform:translate(-9px,2px) rotate(-3.5deg); }
+    26%{ transform:translate(9px,-2px) rotate(3.5deg); }
+    40%{ transform:translate(-8px,1px) rotate(-3deg); }
+    54%{ transform:translate(8px,-1px) rotate(3deg); }
+    70%{ transform:translate(-5px,0) rotate(-1.6deg); }
+    86%{ transform:translate(4px,0) rotate(1.2deg); }
+  }
+  .pack.is-bursting{ animation:pack-burst 0.42s cubic-bezier(0.3,0,0.2,1) forwards; }
+  @keyframes pack-burst{
+    0%{ transform:scale(1); opacity:1; filter:blur(0); }
+    100%{ transform:scale(1.9); opacity:0; filter:blur(8px); }
+  }
+
+  .pack-flash{
+    position:absolute; top:50%; left:50%;
+    width:70vmax; height:70vmax; border-radius:50%;
+    transform:translate(-50%,-50%) scale(0.25);
+    opacity:0; pointer-events:none; z-index:3;
+    background:radial-gradient(circle,
+      rgba(255,255,255,0.95) 0%, rgba(255,231,175,0.75) 22%,
+      rgba(255,200,87,0.35) 42%, transparent 68%);
+  }
+  .pack-flash.is-firing{ animation:pack-flash 0.75s ease-out forwards; }
+  @keyframes pack-flash{
+    0%{ opacity:0; transform:translate(-50%,-50%) scale(0.25); }
+    16%{ opacity:1; transform:translate(-50%,-50%) scale(0.9); }
+    100%{ opacity:0; transform:translate(-50%,-50%) scale(1.7); }
+  }
+  .shards{ position:absolute; top:50%; left:50%; z-index:4; pointer-events:none; }
+  .shard{
+    position:absolute; top:0; left:0;
+    width:var(--sz); height:var(--sz);
+    background:var(--gold);
+    box-shadow:0 0 8px 1px rgba(255,200,87,0.7);
+    opacity:0;
+    animation:shard-fly var(--dur) cubic-bezier(0.15,0.7,0.3,1) forwards;
+  }
+  @keyframes shard-fly{
+    0%{ opacity:1; transform:translate(-50%,-50%) rotate(0deg) scale(1); }
+    100%{
+      opacity:0;
+      transform:translate(calc(var(--dx) - 50%), calc(var(--dy) - 50%))
+                rotate(var(--rot)) scale(0.2);
+    }
+  }
+
+  /* card back - the flip side of the existing 3D card, no duplicated markup */
+  .card-back{
+    position:absolute; inset:0; z-index:2;
+    clip-path:polygon(6% 0%, 94% 0%, 100% 7%, 100% 86%, 50% 100%, 0% 86%, 0% 7%);
+    background:
+      repeating-linear-gradient(124deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 9px),
+      linear-gradient(160deg, #23324E 0%, #131E33 45%, #0A1120 100%);
+    border:1px solid rgba(255,235,190,0.35);
+    display:flex; align-items:center; justify-content:center;
+    transform:rotateY(180deg);
+    backface-visibility:hidden;
+  }
+  .card-back .back-mark{
+    font-family:'Teko',sans-serif; font-weight:700;
+    font-size:2.4rem; letter-spacing:0.16em;
+    color:rgba(255,200,87,0.55);
+    text-shadow:0 0 22px rgba(255,200,87,0.35);
+  }
+  .card-face, .sparkles{ backface-visibility:hidden; }
+
+  body.pack-active #card{ opacity:0; }
+  /* must out-specify `body.pack-active #card` above, hence the body prefix */
+  body.pack-active #card.is-dealing{
+    opacity:1;
+    animation:card-deal 1.2s cubic-bezier(0.16,0.84,0.3,1) forwards;
+  }
+  @keyframes card-deal{
+    0%{ opacity:0; transform:translateY(30px) scale(0.5) rotateY(180deg); }
+    22%{ opacity:1; }
+    62%{ transform:translateY(0) scale(1.07) rotateY(0deg); }
+    100%{ transform:translateY(0) scale(1) rotateY(0deg); }
+  }
+  #card.is-dealt .sheen{ animation:sheen-sweep 1.1s ease-out forwards; }
+  @keyframes sheen-sweep{
+    0%{ background-position:-100% -100%; }
+    100%{ background-position:100% 100%; }
+  }
+
+  @media (max-width:520px){
+    .pack{ width:190px; height:258px; }
+    .pack-badge{ font-size:1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Pack opening overlay. Activated by the `pack-active` class that the inline
+     script below adds to <body>; with JS off it stays display:none. -->
+<div class="pack-scene" id="packScene" role="dialog" aria-modal="true" aria-label="Pack opening">
+  <div class="pack-bg" aria-hidden="true"></div>
+  <div class="pack-rays" aria-hidden="true"></div>
+  <div class="pack-flash" id="packFlash" aria-hidden="true"></div>
+  <div class="shards" id="packShards" aria-hidden="true"></div>
+
+  <div class="pack-wrap">
+    <button class="pack" id="packBtn" type="button" aria-label="Open the Team of the Week pack">
+      <span class="pack-sub">Ultimate Team</span>
+      <span class="pack-crest mono">FA</span>
+      <span class="pack-badge">TOTW</span>
+      <span class="pack-sub">Player Pack &middot; 1 Item</span>
+    </button>
+    <div class="pack-prompt" id="packPrompt">Click to open</div>
+  </div>
+
+  <button class="pack-skip" id="packSkip" type="button">Skip intro</button>
+</div>
+
+<script>
+  /* Runs before the hero paints so the card never flashes in behind the overlay. */
+  (function(){
+    try{
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var seen = sessionStorage.getItem('packOpened') === '1';
+      if(!reduced && !seen){
+        document.body.classList.add('pack-active');
+        window.scrollTo(0,0);
+      }
+    }catch(e){ /* no matchMedia or blocked storage: just skip the intro */ }
+  })();
+</script>
+
+<section class="hero">
+  <div class="eyebrow">Team Of The Week</div>
+  <h1>MOHAMMED BAHEY<br><span style="color:var(--gold);">EL-DEEN</span></h1>
+  <div class="week-tag">WEEK OF THE MADKHOL RECONCILIATION FIX</div>
+  <p class="sub">Backend-first engineer. Node.js / TypeScript. Plays deep, holds the shape, cleans up other people's reconciliation bugs. Currently a free agent.</p>
+
+  <div class="card-stage">
+    <div class="card" id="card">
+      <div class="card-face">
+        <div class="sheen"></div>
+
+        <div class="card-top">
+          <div class="rating-block">
+            <div class="ovr">76</div>
+            <div class="pos">CDM</div>
+            <div class="pot-tag">POT 84</div>
+            <div class="flag-crest">
+              <div class="crest mono">FA</div>
+              <svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Egypt">
+                <rect width="30" height="20" fill="#FFFFFF"/>
+                <rect width="30" height="6.67" fill="#CE1126"/>
+                <rect y="13.33" width="30" height="6.67" fill="#000000"/>
+                <path d="M15 7.7c1.45 0 2.5 0.95 2.5 2.2 0 1.35-1.05 2.4-2.5 2.4s-2.5-1.05-2.5-2.4c0-1.25 1.05-2.2 2.5-2.2Z" fill="#C09300"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="photo-lg">
+            <div class="avatar">MB</div>
+          </div>
+        </div>
+
+        <div class="name-band"><div class="nm">Bahey El-Deen</div></div>
+
+        <div class="stats-plate">
+          <div class="stat-grid">
+            <div class="stat"><span class="val">76</span><span class="lbl">SYS</span></div>
+            <div class="stat"><span class="val">77</span><span class="lbl">SEC</span></div>
+            <div class="stat"><span class="val">72</span><span class="lbl">API</span></div>
+            <div class="stat"><span class="val">75</span><span class="lbl">SCL</span></div>
+            <div class="stat"><span class="val">73</span><span class="lbl">SQL</span></div>
+            <div class="stat"><span class="val">82</span><span class="lbl">DBG</span></div>
+          </div>
+        </div>
+      </div>
+
+            <div class="card-back" aria-hidden="true"><span class="back-mark">FUT</span></div>
+<div class="sparkles">
+        <span class="spark" style="top:6%; left:12%; font-size:1.1rem; animation-delay:0s;">✦</span>
+        <span class="spark" style="top:14%; right:10%; font-size:0.8rem; animation-delay:0.6s;">✦</span>
+        <span class="spark" style="top:38%; left:4%; font-size:0.7rem; animation-delay:1.2s;">✦</span>
+        <span class="spark" style="top:60%; right:3%; font-size:0.9rem; animation-delay:0.3s;">✦</span>
+        <span class="spark" style="top:82%; left:20%; font-size:0.75rem; animation-delay:1.6s;">✦</span>
+        <span class="spark" style="top:90%; right:22%; font-size:1rem; animation-delay:0.9s;">✦</span>
+        <span class="dot-spark" style="top:22%; left:28%; animation-delay:0.4s;"></span>
+        <span class="dot-spark" style="top:50%; right:16%; animation-delay:1.1s;"></span>
+        <span class="dot-spark" style="top:72%; left:10%; animation-delay:1.8s;"></span>
+        <span class="dot-spark" style="top:30%; right:6%; animation-delay:0.8s;"></span>
+      </div>
+    </div>
+
+    <div class="chem-callout">
+      <span class="chem-icon">✒</span>
+      <span>
+        <span class="chem-cap">Chemistry Style</span>
+        <span class="chem-label-lg">MAESTRO</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="card-hint">TOTW · earned for the Madkhol reconciliation fix — tilt the card, then scroll</div>
+
+  <div class="scroll-cue"><div class="line"></div>SCOUT REPORT</div>
+</section>
+
+<section class="panel">
+  <div class="section-tag">01 · Scouting Report</div>
+  <h2 class="section-title">Reads the game from deep</h2>
+  <p class="report-text">
+    A deep-lying midfielder who reads the game before he touches it — holds the shape, screens the back four, and starts the move rather than finishing it. <strong>DBG is the standout attribute (82)</strong>: during his spell at Madkhol he traced a reconciliation drift across five microservices back to a single FX re-derivation bug, then rebuilt the rounding logic so the whole squad could rely on it. That single week is what the <strong>gold TOTW card</strong> above is for — earned for one stretch of form, not a season-long claim.
+  </p>
+  <p class="report-text" style="margin-top:1rem;">
+    Not the finished product yet — <strong>POT 84</strong> reflects a player still early in his development curve, with more first-team minutes to come. Comfortable operating under regulatory pressure (OFAC, HIPAA, GDPR) without losing composure, and equally at home in the engine room: latency, load balancing and query optimisation are part of his routine rather than someone else's job. What's already there: clean architecture instincts, a habit of closing security gaps before they're exploited, and zero interest in shortcuts.
+  </p>
+
+  <div class="radar-wrap">
+    <div class="radar-box">
+      <div class="radar-title">Attribute Radar</div>
+      <svg id="radar" viewBox="0 0 320 300"></svg>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-tag">02 · Career Path</div>
+  <h2 class="section-title">Loan spells</h2>
+
+  <div class="fixture">
+    <div class="stamp">Contract</div>
+    <div class="info">
+      <div class="club">Reglint <span class="mono" style="color:var(--dim); font-size:0.75rem;">— AI Compliance SaaS, Arlington VA (Remote)</span></div>
+      <div class="meta">Apr – May 2026 · Python · AWS Lambda · Bedrock RAG</div>
+      <div class="desc">Built Lambda scrapers pulling regulatory text from 50 US state law portals into the RAG corpus powering the compliance agents. Wrote test coverage validating BLOCK / REDACT / ALERT / PASS enforcement across OFAC, HIPAA, and GDPR scenarios.</div>
+    </div>
+  </div>
+
+  <div class="fixture">
+    <div class="stamp">Internship</div>
+    <div class="info">
+      <div class="club">Madkhol <span class="mono" style="color:var(--dim); font-size:0.75rem;">— Saudi Fintech (Remote)</span></div>
+      <div class="meta">Feb – May 2026 · TypeScript · Node.js · Redis · TypeORM · Performance</div>
+      <div class="desc">Traced a reconciliation drift to an FX re-derivation bug and shipped a provider-aware rounding framework standardized across the shared core package. Designed a Redis TTL subscription state machine that closed two gaps letting expired users keep investing. Flagged race conditions and CMA compliance risk on a force-liquidation cron PR before it shipped. Handled query optimisation and latency work across the services, alongside load balancing and the engineering standards applied to the shared core.</div>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-tag">03 · Highlight Reel</div>
+  <h2 class="section-title">Man of the match</h2>
+
+  <div class="reel">
+    <div class="match-card">
+      <div class="match-head">
+        <div class="match-title">Auto-Investment Engine</div>
+        <div class="match-score mono">4-SERVICE BUILD</div>
+      </div>
+      <p class="match-desc">A fintech microservices system — API gateway, auth, portfolio manager, cron scheduler — with HMAC-SHA256 signed inter-service tokens and idempotent order execution via a Postgres inbox table. Daily NAV snapshots run on Decimal.js precision math with an SLA auto-fail reconciliation loop.</p>
+      <div class="formation">
+        <span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">PostgreSQL</span><span class="chip">RabbitMQ</span><span class="chip">Docker Compose</span>
+      </div>
+      <div class="match-links">
+        <a href="https://github.com/Hamshary99/Auto-Investment-Engine" target="_blank" rel="noopener">View code</a>
+      </div>
+    </div>
+
+    <div class="match-card">
+      <div class="match-head">
+        <div class="match-title">Movies Reservation App</div>
+        <div class="match-score mono">FULL STACK</div>
+      </div>
+      <p class="match-desc">A cinema booking platform with three-role RBAC, 20+ CRUD endpoints, Stripe payments, and QR-code ticket scanning. React frontend handles the multi-step booking flow, seat selection state, and payment confirmation. Query paths and endpoint latency across the booking and seat-selection routes were optimised as part of the build.</p>
+      <div class="formation">
+        <span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">React</span><span class="chip">MongoDB</span><span class="chip">JWT</span><span class="chip">Stripe</span>
+      </div>
+      <div class="match-links">
+        <a href="https://github.com/Hamshary99/Movies-Reservation-App" target="_blank" rel="noopener">View code</a>
+      </div>
+    </div>
+
+    <div class="match-card">
+      <div class="match-head">
+        <div class="match-title">AI Assistant for Developers</div>
+        <div class="match-score mono">6 ENDPOINTS</div>
+      </div>
+      <p class="match-desc">Explain, fix, compare, README, suggestions, history — six AI-powered endpoints on the Gemini API, guarded by Zod validation and global rate limiting. React frontend with live Markdown rendering, syntax highlighting, and code diffs, shipped via a multi-stage Docker Compose pipeline. Endpoint latency and request handling were tuned alongside the global rate limiting.</p>
+      <div class="formation">
+        <span class="chip">Node.js</span><span class="chip">React</span><span class="chip">MongoDB</span><span class="chip">Docker</span><span class="chip">Gemini API</span><span class="chip">Zod</span>
+      </div>
+      <div class="match-links">
+        <a href="https://github.com/Hamshary99/AI-Assistant-for-Developers" target="_blank" rel="noopener">View code</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-tag">04 · Player Traits</div>
+  <h2 class="section-title">Tendencies</h2>
+  <div class="traits">
+    <div class="trait"><span class="dot"></span>Bug Hunter</div>
+    <div class="trait"><span class="dot"></span>Clean Architecture</div>
+    <div class="trait"><span class="dot"></span>Async Wizard</div>
+    <div class="trait"><span class="dot"></span>Reads Race Conditions</div>
+    <div class="trait"><span class="dot"></span>Compliance-Minded</div>
+    <div class="trait"><span class="dot"></span>Ships Under Pressure</div>
+    <div class="trait"><span class="dot"></span>Tunes For Latency</div>
+  </div>
+
+  <div class="stack">
+    <div class="stack-row"><span class="stack-k">Languages</span><span class="stack-v">JavaScript &middot; TypeScript &middot; Python &middot; C/C++</span></div>
+    <div class="stack-row"><span class="stack-k">Backend</span><span class="stack-v">Node.js &middot; NestJS &middot; Express.js &middot; REST APIs &middot; Microservices &middot; RabbitMQ &middot; Cron services</span></div>
+    <div class="stack-row"><span class="stack-k">Frontend</span><span class="stack-v">React.js (hooks, component lifecycle, controlled state)</span></div>
+    <div class="stack-row"><span class="stack-k">Databases</span><span class="stack-v">PostgreSQL &middot; MongoDB &middot; MySQL &middot; Redis &middot; TypeORM</span></div>
+    <div class="stack-row"><span class="stack-k">Performance</span><span class="stack-v">Latency tuning &middot; Load balancing &middot; Query optimisation</span></div>
+    <div class="stack-row"><span class="stack-k">Cloud &amp; DevOps</span><span class="stack-v">AWS Lambda &middot; AWS S3 &middot; Docker &middot; GitHub Actions</span></div>
+    <div class="stack-row"><span class="stack-k">Foundations</span><span class="stack-v">OOP &middot; Data structures &amp; algorithms &middot; Clean architecture &middot; Engineering best practices</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="status-badge"><span class="dot"></span>CONTRACT STATUS: FREE AGENT — OPEN TO OFFERS</div>
+  <h2 class="section-title" style="margin-bottom:0.5rem;">Agent Details</h2>
+  <p class="report-text" style="margin-bottom:0;">Node.js backend roles, full-stack, or anything that needs someone who reads game state before making the tackle.</p>
+
+  <a class="cv-btn" href="CV.pdf" download="Mohammed-Bahey-El-Deen-CV.pdf">
+    <span aria-hidden="true">&#8595;</span>
+    <span>Full dossier</span>
+    <span class="cv-meta">PDF &middot; 307&nbsp;KB</span>
+  </a>
+
+  <div class="agent-grid">
+    <div class="agent-item">
+      <div class="k">Email</div>
+      <a href="mailto:mo.alhamshary@gmail.com">mo.alhamshary@gmail.com</a>
+    </div>
+    <div class="agent-item">
+      <div class="k">Phone</div>
+      <div class="v">+(20) 155 264 5236</div>
+    </div>
+    <div class="agent-item">
+      <div class="k">GitHub</div>
+      <a href="https://github.com/Hamshary99" target="_blank" rel="noopener">github.com/Hamshary99</a>
+    </div>
+    <div class="agent-item">
+      <div class="k">LinkedIn</div>
+      <a href="https://linkedin.com/in/mohammed-bahey-el-deen656095198" target="_blank" rel="noopener">mohammed-bahey-el-deen</a>
+    </div>
+    <div class="agent-item">
+      <div class="k">Base</div>
+      <div class="v">Cairo, Egypt</div>
+    </div>
+    <div class="agent-item">
+      <div class="k">Education</div>
+      <div class="v">B.S. Mechatronics, Menoufia University</div>
+    </div>
+    <div class="agent-item">
+      <div class="k">Languages</div>
+      <div class="v">Arabic (native) &middot; English (fluent)</div>
+    </div>
+  </div>
+
+  <div class="replay-wrap">
+    <button class="replay-btn" id="replayPack" type="button">Open another pack</button>
+  </div>
+
+  <div class="foot-note">SEASON 2026 · CARD ISSUED BY SELF · NOT AFFILIATED WITH EA SPORTS FC</div>
+</footer>
+
+<script>
+  const card = document.getElementById('card');
+  const stage = card.parentElement;
+  let raf = null;
+
+  function handleMove(e){
+    if (document.body.classList.contains('pack-active')) return;
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX ?? (e.touches && e.touches[0].clientX)) - rect.left;
+    const y = (e.clientY ?? (e.touches && e.touches[0].clientY)) - rect.top;
+    const px = (x / rect.width) - 0.5;
+    const py = (y / rect.height) - 0.5;
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      card.style.transform = `rotateY(${px * 18}deg) rotateX(${-py * 18}deg) scale(1.04)`;
+    });
+  }
+  function reset(){
+    card.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+  }
+
+  stage.addEventListener('mousemove', handleMove);
+  stage.addEventListener('mouseleave', reset);
+  stage.addEventListener('touchmove', (e)=>{ handleMove(e); }, {passive:true});
+  stage.addEventListener('touchend', reset);
+
+  /* ---- retro hexagon attribute radar ---- */
+  (function drawRadar(){
+    /* The card markup is the single source of truth for the six values - it is
+       in the HTML, so it survives with JS off. The radar only owns the axis
+       ORDER (chosen so neighbouring axes read sensibly), and looks each value
+       up from the DOM. Editing a stat in the card is now enough. */
+    const AXIS_ORDER = ['SYS','API','SQL','DBG','SCL','SEC'];
+    const fromCard = {};
+    document.querySelectorAll('.stat-grid .stat').forEach(el => {
+      const lbl = el.querySelector('.lbl'), val = el.querySelector('.val');
+      if (lbl && val) fromCard[lbl.textContent.trim()] = parseInt(val.textContent, 10);
+    });
+    const stats = AXIS_ORDER
+      .filter(label => Number.isFinite(fromCard[label]))
+      .map(label => ({ label, value: fromCard[label] }));
+    if (stats.length < 3) return;   /* markup changed shape - skip rather than draw junk */
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.getElementById('radar');
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label',
+      'Attribute radar chart. ' + stats.map(s => s.label + ' ' + s.value).join(', ') + '. Out of 99.');
+    const cx = 160, cy = 148, maxR = 108, maxVal = 99;
+    const n = stats.length;
+    const angleFor = i => (Math.PI * 2 * i / n) - Math.PI / 2;
+    const pointAt = (i, r) => [ cx + r * Math.cos(angleFor(i)), cy + r * Math.sin(angleFor(i)) ];
+
+    function el(tag, attrs){
+      const e = document.createElementNS(svgNS, tag);
+      for (const k in attrs) e.setAttribute(k, attrs[k]);
+      return e;
+    }
+
+    // grid rings (5 levels, like old career-mode pizza charts)
+    [0.2,0.4,0.6,0.8,1].forEach(frac => {
+      let pts = '';
+      for (let i=0;i<n;i++){
+        const [x,y] = pointAt(i, maxR*frac);
+        pts += `${x},${y} `;
+      }
+      svg.appendChild(el('polygon', {class:'grid-line', points: pts.trim()}));
+    });
+
+    // axis spokes + labels
+    stats.forEach((s,i) => {
+      const [x,y] = pointAt(i, maxR);
+      svg.appendChild(el('line', {class:'axis-line', x1:cx, y1:cy, x2:x, y2:y}));
+
+      const [lx,ly] = pointAt(i, maxR + 22);
+      const tag = el('text', {class:'lbl-tag', x:lx, y:ly - 5, 'text-anchor':'middle'});
+      tag.textContent = s.label;
+      svg.appendChild(tag);
+
+      const val = el('text', {class:'lbl-val', x:lx, y:ly + 9, 'text-anchor':'middle'});
+      val.textContent = s.value;
+      svg.appendChild(val);
+    });
+
+    // stat polygon
+    let statPts = '';
+    const nodeCoords = [];
+    stats.forEach((s,i) => {
+      const r = (s.value / maxVal) * maxR;
+      const [x,y] = pointAt(i, r);
+      statPts += `${x},${y} `;
+      nodeCoords.push([x,y]);
+    });
+    svg.appendChild(el('polygon', {class:'stat-poly', points: statPts.trim()}));
+    nodeCoords.forEach(([x,y]) => {
+      svg.appendChild(el('circle', {class:'stat-point', cx:x, cy:y, r:3.2}));
+    });
+  })();
+
+  /* ---- replay the intro ---- */
+  (function replay(){
+    const btn = document.getElementById('replayPack');
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      try{ sessionStorage.removeItem('packOpened'); }catch(e){}
+      location.reload();
+    });
+  })();
+
+  /* ---- pack opening sequence ---- */
+  (function packOpening(){
+    if(!document.body.classList.contains('pack-active')) return;
+
+    const scene   = document.getElementById('packScene');
+    const packBtn = document.getElementById('packBtn');
+    const flash   = document.getElementById('packFlash');
+    const shards  = document.getElementById('packShards');
+    const prompt  = document.getElementById('packPrompt');
+    const skipBtn = document.getElementById('packSkip');
+    const cardEl  = document.getElementById('card');
+    let done = false;
+
+    function finish(){
+      if(done) return;
+      done = true;
+      try{ sessionStorage.setItem('packOpened','1'); }catch(e){}
+      document.body.classList.remove('pack-active');
+      cardEl.classList.remove('is-dealing');
+      cardEl.classList.add('is-dealt');
+      scene.classList.add('is-dismissed');
+      scene.setAttribute('aria-hidden','true');
+      setTimeout(function(){ if(scene.parentNode) scene.remove(); }, 700);
+    }
+
+    function spawnShards(n){
+      const frag = document.createDocumentFragment();
+      for(let i=0;i<n;i++){
+        const s = document.createElement('span');
+        const ang  = Math.random()*Math.PI*2;
+        const dist = 140 + Math.random()*320;
+        s.className = 'shard';
+        s.style.setProperty('--dx', (Math.cos(ang)*dist).toFixed(1)+'px');
+        s.style.setProperty('--dy', (Math.sin(ang)*dist).toFixed(1)+'px');
+        s.style.setProperty('--rot', Math.round(Math.random()*720-360)+'deg');
+        s.style.setProperty('--sz', (3+Math.random()*5).toFixed(1)+'px');
+        s.style.setProperty('--dur', (0.7+Math.random()*0.5).toFixed(2)+'s');
+        s.style.borderRadius = Math.random() > 0.5 ? '50%' : '1px';
+        frag.appendChild(s);
+      }
+      shards.appendChild(frag);
+    }
+
+    function open(){
+      if(done || packBtn.disabled) return;
+      packBtn.disabled = true;
+      prompt.textContent = '';
+      packBtn.classList.add('is-shaking');
+
+      setTimeout(function(){            /* 500ms - shake ends, pack bursts */
+        packBtn.classList.remove('is-shaking');
+        packBtn.classList.add('is-bursting');
+        flash.classList.add('is-firing');
+        scene.classList.add('is-clearing');
+        spawnShards(46);
+      }, 500);
+
+      setTimeout(function(){            /* 800ms - card flips out of the light */
+        cardEl.classList.add('is-dealing');
+      }, 800);
+
+      setTimeout(finish, 2060);         /* deal ends at 2000; hand the page back */
+    }
+
+    packBtn.addEventListener('click', open);
+    skipBtn.addEventListener('click', finish);
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') finish(); });
+    packBtn.focus({preventScroll:true});
+    setTimeout(finish, 20000);          /* failsafe: never gate the page forever */
+  })();
+</script>
+
+</body>
+</html>
