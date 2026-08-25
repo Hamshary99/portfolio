@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Bahey El-Deen — Player Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#060B18;
+    --bg-panel:#0B1424;
+    --bg-panel-2:#0F1B30;
+    --card-1:#0D2038;
+    --cyan:#38F2C0;
+    --pink:#FF3D81;
+    --gold:#FFC857;
+    --ink:#EAF2FF;
+    --dim:#7E93B8;
+    --line:rgba(255,255,255,0.08);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-deep);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--cyan);color:#04140F;}
+
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .display{font-family:'Teko',sans-serif;font-weight:600;letter-spacing:0.01em;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:6rem 1.5rem 4rem;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 15%, rgba(56,242,192,0.10), transparent 60%),
+      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,61,129,0.08), transparent 60%),
+      var(--bg-deep);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 75%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:0.9rem;
+    z-index:1;
+    display:flex; align-items:center; gap:0.6rem;
+  }
+  .eyebrow::before, .eyebrow::after{
+    content:"";
+    width:24px; height:1px;
+    background:var(--gold);
+    opacity:0.6;
+  }
+  .week-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    color:var(--dim);
+    text-align:center;
+    z-index:1;
+    margin:-2.4rem 0 2.4rem;
+  }
+  .hero h1{
+    font-family:'Teko',sans-serif;
+    font-weight:700;
+    font-size:clamp(2.4rem, 7vw, 4.6rem);
+    line-height:0.95;
+    text-align:center;
+    margin:0 0 0.5rem;
+    z-index:1;
+    letter-spacing:0.01em;
+  }
+  .hero h1 span{color:var(--cyan);}
+  .hero .sub{
+    color:var(--dim);
+    font-size:0.98rem;
+    text-align:center;
+    max-width:34rem;
+    margin:0 0 3rem;
+    z-index:1;
+    line-height:1.55;
+  }
+
+  /* ---------- CARD ---------- */
+  .card-stage{
+    perspective:1400px;
+    z-index:1;
+  }
+  .card{
+    position:relative;
+    width:300px;
+    height:472px;
+    transform-style:preserve-3d;
+    transition:transform 0.15s ease-out;
+    cursor:pointer;
+  }
+  .card-face{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(160deg, #E7C077 0%, #C89A4E 30%, #A87B33 62%, #7C5A28 100%);
+    border:1px solid rgba(255,235,190,0.6);
+    clip-path:polygon(6% 0%, 94% 0%, 100% 7%, 100% 86%, 50% 100%, 0% 86%, 0% 7%);
+    box-shadow:
+      0 30px 60px -20px rgba(0,0,0,0.85),
+      0 0 44px -8px rgba(255,200,87,0.3);
+    overflow:hidden;
+    padding:18px 0 0;
+    display:flex;
+    flex-direction:column;
+  }
+  .card-face::before{
+    /* brushed gold foil diagonal texture */
+    content:"";
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(
+      124deg,
+      rgba(255,255,255,0.10) 0px,
+      rgba(255,255,255,0.10) 2px,
+      transparent 2px,
+      transparent 9px
+    );
+    pointer-events:none;
+  }
+  .sheen{
+    position:absolute; inset:0;
+    background:linear-gradient(115deg, transparent 40%, rgba(255,230,160,0.28) 48%, transparent 56%);
+    background-size:250% 250%;
+    background-position:-100% -100%;
+    transition:background-position 0.6s ease;
+    pointer-events:none;
+    mix-blend-mode:overlay;
+  }
+  .card:hover .sheen{ background-position:100% 100%; }
+
+  /* sparkle field + shining outer glow */
+  .card-stage{ position:relative; }
+  .card-stage::before{
+    content:"";
+    position:absolute;
+    top:50%; left:50%;
+    width:420px; height:420px;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(255,200,87,0.22), transparent 70%);
+    animation:coreglow 3.2s ease-in-out infinite;
+    pointer-events:none;
+    z-index:0;
+  }
+  @keyframes coreglow{
+    0%,100%{ opacity:0.5; transform:translate(-50%,-50%) scale(0.92); }
+    50%{ opacity:1; transform:translate(-50%,-50%) scale(1.08); }
+  }
+  .sparkles{
+    position:absolute; inset:0;
+    pointer-events:none;
+    z-index:3;
+  }
+  .spark{
+    position:absolute;
+    color:var(--gold);
+    text-shadow:0 0 8px rgba(255,200,87,0.9), 0 0 16px rgba(255,200,87,0.5);
+    animation:twinkle 2.6s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{ opacity:0; transform:scale(0.5) rotate(0deg); }
+    50%{ opacity:1; transform:scale(1) rotate(20deg); }
+  }
+  .dot-spark{
+    position:absolute;
+    width:4px; height:4px;
+    background:var(--gold);
+    border-radius:50%;
+    box-shadow:0 0 6px 2px rgba(255,200,87,0.8);
+    animation:twinkle 2.2s ease-in-out infinite;
+  }
+
+  .card-top{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    position:relative; z-index:1;
+    padding:0 18px 6px;
+  }
+  .rating-block{ text-align:left; line-height:0.88; }
+  .rating-block .ovr{
+    font-family:'Teko',sans-serif; font-weight:700;
+    font-size:2.6rem; color:#1A1206;
+  }
+  .rating-block .pos{
+    font-family:'Teko',sans-serif; font-weight:600;
+    font-size:1.15rem; color:#1A1206;
+    letter-spacing:0.04em;
+    margin-bottom:6px;
+  }
+  .pot-tag{
+    display:inline-block;
+    margin-bottom:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.55rem;
+    letter-spacing:0.06em;
+    color:#2B1D07;
+    background:rgba(255,255,255,0.35);
+    border:1px solid rgba(43,29,7,0.35);
+    border-radius:20px;
+    padding:1px 7px;
+  }
+  .flag-crest{
+    display:flex; flex-direction:column; align-items:flex-start; gap:8px;
+    margin-top:12px;
+  }
+  .flag-crest .flag{ font-size:1.6rem; line-height:1; }
+  .crest{
+    width:36px; height:36px;
+    border-radius:6px;
+    background:linear-gradient(145deg, #2B1D07, #17100A);
+    border:1px solid rgba(255,235,190,0.6);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem; font-weight:700; color:#FFF8E7;
+  }
+
+  .photo-lg{
+    position:relative;
+    width:132px; height:auto;
+    align-self:flex-end;
+    margin-right:-8px;
+    display:flex; align-items:flex-end; justify-content:center;
+  }
+  .avatar{
+    width:126px; height:170px;
+    border-radius:16px 16px 0 0;
+    background:radial-gradient(circle at 40% 25%, #2A2210, #0A0906 78%);
+    border:2px solid rgba(255,200,87,0.55);
+    border-bottom:none;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Teko',sans-serif; font-weight:700;
+    font-size:2.6rem; color:var(--gold);
+    box-shadow:0 0 30px -6px rgba(255,200,87,0.45);
+    position:relative;
+  }
+  .avatar::after{
+    content:"";
+    position:absolute; inset:-14px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(255,200,87,0.35), transparent 70%);
+    animation:corepulse 2.6s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes corepulse{
+    0%,100%{ opacity:0.4; transform:scale(0.9); }
+    50%{ opacity:0.9; transform:scale(1.15); }
+  }
+
+  .name-band{
+    position:relative; z-index:1;
+    background:linear-gradient(180deg, #201808 0%, #0A0805 100%);
+    text-align:center;
+    padding:9px 10px;
+    margin-top:14px;
+  }
+  .name-band .nm{
+    font-family:'Teko',sans-serif; font-weight:600;
+    font-size:1.55rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:#F3DFA8;
+  }
+
+  .stats-plate{
+    position:relative; z-index:1;
+    background:
+      repeating-linear-gradient(124deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 9px),
+      linear-gradient(180deg, #14100A 0%, #0A0805 100%);
+    padding:14px 26px 20px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .stat-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px 24px;
+    justify-items:center;
+    margin-top:6px;
+  }
+  .stat{
+    display:flex; align-items:baseline; justify-content:center; gap:9px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:1.32rem;
+  }
+  .stat .val{ color:#F3DFA8; font-weight:700; }
+  .stat .lbl{ color:#F3DFA8; opacity:0.92; letter-spacing:0.04em; font-weight:600; }
+
+  .chem-callout{
+    position:relative; z-index:1;
+    margin:1.6rem auto 0;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:linear-gradient(145deg, #2B1D07, #17100A);
+    border:1px solid rgba(255,235,190,0.75);
+    border-radius:8px;
+    padding:8px 20px;
+    box-shadow:0 6px 18px -6px rgba(0,0,0,0.5), 0 0 20px -6px rgba(255,200,87,0.35);
+  }
+  .chem-callout .chem-icon{ font-size:1.1rem; color:var(--gold); line-height:1; }
+  .chem-callout .chem-label-lg{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    font-size:0.85rem;
+    color:#FFF8E7;
+    letter-spacing:0.14em;
+  }
+  .chem-callout .chem-cap{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.52rem;
+    color:var(--dim);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:1px;
+  }
+
+  .card-hint{
+    z-index:1;
+    margin-top:1.4rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem;
+    color:var(--dim);
+    letter-spacing:0.06em;
+    text-align:center;
+  }
+
+  .scroll-cue{
+    position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+    z-index:1;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    color:var(--dim);
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.62rem;
+    letter-spacing:0.2em;
+  }
+  .scroll-cue .line{ width:1px; height:26px; background:linear-gradient(var(--cyan), transparent); animation:pulse 1.8s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:0.3;} 50%{opacity:1;} }
+
+  /* ---------- SECTIONS ---------- */
+  section.panel{
+    max-width:840px;
+    margin:0 auto;
+    padding:5rem 1.5rem;
+    border-top:1px solid var(--line);
+  }
+  .section-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--cyan);
+    margin-bottom:0.6rem;
+  }
+  .section-title{
+    font-family:'Teko',sans-serif; font-weight:600;
+    font-size:clamp(1.8rem,4vw,2.6rem);
+    margin:0 0 1.6rem;
+  }
+
+  .report-text{
+    color:#C7D6EE;
+    font-size:1.02rem;
+    line-height:1.75;
+    max-width:640px;
+  }
+  .report-text strong{ color:var(--ink); }
+
+  /* radar / pizza chart */
+  .radar-wrap{
+    display:flex;
+    justify-content:center;
+    margin:2.6rem 0 1rem;
+  }
+  .radar-box{
+    background:var(--bg-panel-2);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:1.6rem 1.6rem 1.2rem;
+    width:100%;
+    max-width:420px;
+  }
+  .radar-box .radar-title{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--dim);
+    text-align:center;
+    margin-bottom:0.4rem;
+  }
+  #radar text{
+    font-family:'JetBrains Mono',monospace;
+    fill:var(--ink);
+  }
+  #radar .grid-line{ stroke:rgba(255,255,255,0.14); stroke-width:1; fill:none; }
+  #radar .axis-line{ stroke:rgba(255,255,255,0.10); stroke-width:1; }
+  #radar .stat-poly{ fill:rgba(56,242,192,0.16); stroke:var(--cyan); stroke-width:2; stroke-linejoin:round; }
+  #radar .stat-point{ fill:var(--gold); }
+  #radar .lbl-tag{ font-size:9.5px; fill:var(--dim); letter-spacing:0.05em; }
+  #radar .lbl-val{ font-size:11px; fill:var(--gold); font-weight:700; }
+
+  /* career path / loan spells */
+  .fixture{
+    display:flex; align-items:center; gap:1.1rem;
+    padding:1.1rem 0;
+    border-bottom:1px solid var(--line);
+  }
+  .fixture:last-child{ border-bottom:none; }
+  .fixture .stamp{
+    flex:none;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.6rem;
+    letter-spacing:0.08em;
+    color:var(--pink);
+    border:1px solid rgba(255,61,129,0.45);
+    padding:3px 8px;
+    border-radius:4px;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .fixture .info{ flex:1; }
+  .fixture .club{
+    font-family:'Teko',sans-serif; font-weight:600;
+    font-size:1.25rem; color:var(--ink);
+    margin-bottom:2px;
+  }
+  .fixture .meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem; color:var(--dim);
+  }
+  .fixture .desc{
+    margin-top:6px; color:#B9C8E2; font-size:0.9rem; line-height:1.6;
+  }
+
+  /* highlight reel / projects */
+  .reel{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1rem;
+  }
+  .match-card{
+    background:var(--bg-panel-2);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:1.4rem 1.5rem;
+    transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .match-card:hover{ border-color:rgba(56,242,192,0.4); transform:translateY(-2px); }
+  .match-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:0.5rem; gap:1rem;
+  }
+  .match-title{
+    font-family:'Teko',sans-serif; font-weight:600;
+    font-size:1.4rem; color:var(--ink);
+  }
+  .match-score{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem; color:var(--gold);
+    white-space:nowrap;
+  }
+  .match-desc{ color:#B9C8E2; font-size:0.9rem; line-height:1.65; margin:0 0 0.8rem; }
+  .formation{
+    display:flex; flex-wrap:wrap; gap:6px;
+  }
+  .chip{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.65rem;
+    color:var(--cyan);
+    border:1px solid rgba(56,242,192,0.3);
+    background:rgba(56,242,192,0.06);
+    padding:3px 8px;
+    border-radius:20px;
+  }
+
+  /* traits */
+  .traits{ display:flex; flex-wrap:wrap; gap:10px; }
+  .trait{
+    display:flex; align-items:center; gap:8px;
+    background:var(--bg-panel-2);
+    border:1px solid var(--line);
+    border-radius:30px;
+    padding:8px 14px 8px 10px;
+    font-size:0.85rem;
+    color:var(--ink);
+  }
+  .trait .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 8px 1px rgba(255,200,87,0.6);
+  }
+
+  /* footer / agent */
+  footer{
+    max-width:840px;
+    margin:0 auto;
+    padding:5rem 1.5rem 6rem;
+    border-top:1px solid var(--line);
+  }
+  .status-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem; letter-spacing:0.08em;
+    color:var(--cyan);
+    border:1px solid rgba(56,242,192,0.4);
+    border-radius:30px;
+    padding:6px 14px;
+    margin-bottom:1.8rem;
+  }
+  .status-badge .dot{
+    width:7px; height:7px; border-radius:50%; background:var(--cyan);
+    box-shadow:0 0 8px 2px rgba(56,242,192,0.7);
+    animation:blip 1.6s ease-in-out infinite;
+  }
+  @keyframes blip{ 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+
+  .agent-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:1.4rem;
+    margin-top:1rem;
+  }
+  .agent-item .k{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--dim); margin-bottom:4px;
+  }
+  .agent-item a, .agent-item .v{
+    color:var(--ink);
+    text-decoration:none;
+    font-size:0.98rem;
+    border-bottom:1px solid transparent;
+    transition:border-color 0.2s ease, color 0.2s ease;
+  }
+  .agent-item a:hover{ color:var(--cyan); border-color:var(--cyan); }
+
+  .foot-note{
+    margin-top:3.5rem;
+    color:var(--dim);
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.03em;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+
+  @media (max-width:520px){
+    .card{ width:260px; height:409px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="eyebrow">Team Of The Week</div>
+  <h1>MOHAMMED BAHEY<br><span style="color:var(--gold);">EL-DEEN</span></h1>
+  <div class="week-tag">WEEK OF THE MADKHOL RECONCILIATION FIX</div>
+  <p class="sub">Backend-first engineer. Node.js / TypeScript. Plays deep, holds the shape, cleans up other people's reconciliation bugs. Currently a free agent.</p>
+
+  <div class="card-stage">
+    <div class="card" id="card">
+      <div class="card-face">
+        <div class="sheen"></div>
+
+        <div class="card-top">
+          <div class="rating-block">
+            <div class="ovr">76</div>
+            <div class="pos">CAM</div>
+            <div class="pot-tag">POT 89</div>
+            <div class="flag-crest">
+              <div class="crest mono">FA</div>
+              <div class="flag">🇪🇬</div>
+            </div>
+          </div>
+
+          <div class="photo-lg">
+            <div class="avatar">MB</div>
+          </div>
+        </div>
+
+        <div class="name-band"><div class="nm">Bahey El-Deen</div></div>
+
+        <div class="stats-plate">
+          <div class="stat-grid">
+            <div class="stat"><span class="val">81</span><span class="lbl">SYS</span></div>
+            <div class="stat"><span class="val">72</span><span class="lbl">SEC</span></div>
+            <div class="stat"><span class="val">72</span><span class="lbl">API</span></div>
+            <div class="stat"><span class="val">74</span><span class="lbl">SCL</span></div>
+            <div class="stat"><span class="val">73</span><span class="lbl">SQL</span></div>
+            <div class="stat"><span class="val">83</span><span class="lbl">DBG</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sparkles">
+        <span class="spark" style="top:6%; left:12%; font-size:1.1rem; animation-delay:0s;">✦</span>
+        <span class="spark" style="top:14%; right:10%; font-size:0.8rem; animation-delay:0.6s;">✦</span>
+        <span class="spark" style="top:38%; left:4%; font-size:0.7rem; animation-delay:1.2s;">✦</span>
+        <span class="spark" style="top:60%; right:3%; font-size:0.9rem; animation-delay:0.3s;">✦</span>
+        <span class="spark" style="top:82%; left:20%; font-size:0.75rem; animation-delay:1.6s;">✦</span>
+        <span class="spark" style="top:90%; right:22%; font-size:1rem; animation-delay:0.9s;">✦</span>
+        <span class="dot-spark" style="top:22%; left:28%; animation-delay:0.4s;"></span>
+        <span class="dot-spark" style="top:50%; right:16%; animation-delay:1.1s;"></span>
+        <span class="dot-spark" style="top:72%; left:10%; animation-delay:1.8s;"></span>
+        <span class="dot-spark" style="top:30%; right:6%; animation-delay:0.8s;"></span>
+      </div>
+    </div>
+
+    <div class="chem-callout">
+      <span class="chem-icon">✒</span>
+      <span>
+        <span class="chem-cap">Chemistry Style</span>
+        <span class="chem-label-lg">MAESTRO</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="card-hint">TOTW · earned for the Madkhol reconciliation fix — tilt the card, then scroll</div>
+
+  <div class="scroll-cue"><div class="line"></div>SCOUT REPORT</div>
+</section>
+
+<section class="panel">
+  <div class="section-tag">01 · Scouting Report</div>
+  <h2 class="section-title">Reads the game from deep</h2>
+  <p class="report-text">
+    A young CAM in the classic mould — doesn't sit deep anymore, pushes forward to dictate the final ball. <strong>DBG is the standout attribute (83)</strong>: during his spell at Madkhol he traced a reconciliation drift across five microservices back to a single FX re-derivation bug, then rebuilt the rounding logic so the whole squad could rely on it. That single week is what the <strong>gold TOTW card</strong> above is for — earned for one stretch of form, not a season-long claim.
+  </p>
+  <p class="report-text" style="margin-top:1rem;">
+    Not the finished product yet — <strong>POT 89</strong> reflects a player still early in his development curve, with more first-team minutes to come. Comfortable operating under regulatory pressure (OFAC, HIPAA, GDPR) without losing composure. What's already there: clean architecture instincts, a habit of closing security gaps before they're exploited, and zero interest in shortcuts.
+  </p>
+
+  <div class="radar-wrap">
+    <div class="radar-box">
+      <div class="radar-title">Attribute Radar</div>
+      <svg id="radar" viewBox="0 0 320 300"></svg>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-tag">02 · Career Path</div>
+  <h2 class="section-title">Loan spells</h2>
+
+  <div class="fixture">
+    <div class="stamp">On Loan</div>
+    <div class="info">
+      <div class="club">Reglint <span class="mono" style="color:var(--dim); font-size:0.75rem;">— AI Compliance SaaS, Arlington VA (Remote)</span></div>
+      <div class="meta">Apr – May 2026 · Python · AWS Lambda · Bedrock RAG</div>
+      <div class="desc">Built Lambda scrapers pulling regulatory text from 50 US state law portals into the RAG corpus powering the compliance agents. Wrote test coverage validating BLOCK / REDACT / ALERT / PASS enforcement across OFAC, HIPAA, and GDPR scenarios.</div>
+    </div>
+  </div>
+
+  <div class="fixture">
+    <div class="stamp">On Loan</div>
+    <div class="info">
+      <div class="club">Madkhol <span class="mono" style="color:var(--dim); font-size:0.75rem;">— Saudi Fintech (Remote)</span></div>
+      <div class="meta">Feb – May 2026 · TypeScript · Node.js · Redis · TypeORM</div>
+      <div class="desc">Traced a reconciliation drift to an FX re-derivation bug and shipped a provider-aware rounding framework standardized across the shared core package. Designed a Redis TTL subscription state machine that closed two gaps letting expired users keep investing. Flagged race conditions and CMA compliance risk on a force-liquidation cron PR before it shipped.</div>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-tag">03 · Highlight Reel</div>
+  <h2 class="section-title">Man of the match</h2>
+
+  <div class="reel">
+    <div class="match-card">
+      <div class="match-head">
+        <div class="match-title">Auto-Investment Engine</div>
+        <div class="match-score mono">4-SERVICE BUILD</div>
+      </div>
+      <p class="match-desc">A fintech microservices system — API gateway, auth, portfolio manager, cron scheduler — with HMAC-SHA256 signed inter-service tokens and idempotent order execution via a Postgres inbox table. Daily NAV snapshots run on Decimal.js precision math with an SLA auto-fail reconciliation loop.</p>
+      <div class="formation">
+        <span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">PostgreSQL</span><span class="chip">RabbitMQ</span><span class="chip">Docker Compose</span>
+      </div>
+    </div>
+
+    <div class="match-card">
+      <div class="match-head">
+        <div class="match-title">Movies Reservation App</div>
+        <div class="match-score mono">FULL STACK</div>
+      </div>
+      <p class="match-desc">A cinema booking platform with three-role RBAC, 20+ CRUD endpoints, Stripe payments, and QR-code ticket scanning. React frontend handles the multi-step booking flow, seat selection state, and payment confirmation.</p>
+      <div class="formation">
+        <span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">React</span><span class="chip">MongoDB</span><span class="chip">JWT</span><span class="chip">Stripe</span>
+      </div>
+    </div>
+
+    <div class="match-card">
+      <div class="match-head">
+        <div class="match-title">AI Assistant for Developers</div>
+        <div class="match-score mono">6 ENDPOINTS</div>
+      </div>
+      <p class="match-desc">Explain, fix, compare, README, suggestions, history — six AI-powered endpoints on the Gemini API, guarded by Zod validation and global rate limiting. React frontend with live Markdown rendering, syntax highlighting, and code diffs, shipped via a multi-stage Docker Compose pipeline.</p>
+      <div class="formation">
+        <span class="chip">Node.js</span><span class="chip">React</span><span class="chip">MongoDB</span><span class="chip">Docker</span><span class="chip">Gemini API</span><span class="chip">Zod</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-tag">04 · Player Traits</div>
+  <h2 class="section-title">Tendencies</h2>
+  <div class="traits">
+    <div class="trait"><span class="dot"></span>Bug Hunter</div>
+    <div class="trait"><span class="dot"></span>Clean Architecture</div>
+    <div class="trait"><span class="dot"></span>Async Wizard</div>
+    <div class="trait"><span class="dot"></span>Reads Race Conditions</div>
+    <div class="trait"><span class="dot"></span>Compliance-Minded</div>
+    <div class="trait"><span class="dot"></span>Ships Under Pressure</div>
+  </div>
+</section>
+
+<footer>
+  <div class="status-badge"><span class="dot"></span>CONTRACT STATUS: FREE AGENT — OPEN TO OFFERS</div>
+  <h2 class="section-title" style="margin-bottom:0.5rem;">Agent Details</h2>
+  <p class="report-text" style="margin-bottom:0;">Node.js backend roles, full-stack, or anything that needs someone who reads game state before making the tackle.</p>
+
+  <div class="agent-grid">
+    <div class="agent-item">
+      <div class="k">Email</div>
+      <a href="mailto:mo.alhamshary@gmail.com">mo.alhamshary@gmail.com</a>
+    </div>
+    <div class="agent-item">
+      <div class="k">Phone</div>
+      <div class="v">+(20) 155 264 5236</div>
+    </div>
+    <div class="agent-item">
+      <div class="k">GitHub</div>
+      <a href="https://github.com/Hamshary99" target="_blank" rel="noopener">github.com/Hamshary99</a>
+    </div>
+    <div class="agent-item">
+      <div class="k">LinkedIn</div>
+      <a href="https://linkedin.com/in/mohammed-bahey-el-deen656095198" target="_blank" rel="noopener">mohammed-bahey-el-deen</a>
+    </div>
+    <div class="agent-item">
+      <div class="k">Base</div>
+      <div class="v">Cairo, Egypt</div>
+    </div>
+    <div class="agent-item">
+      <div class="k">Education</div>
+      <div class="v">B.S. Mechatronics, Menoufia University</div>
+    </div>
+  </div>
+
+  <div class="foot-note">SEASON 2026 · CARD ISSUED BY SELF · NOT AFFILIATED WITH EA SPORTS FC</div>
+</footer>
+
+<script>
+  const card = document.getElementById('card');
+  const stage = card.parentElement;
+  let raf = null;
+
+  function handleMove(e){
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX ?? (e.touches && e.touches[0].clientX)) - rect.left;
+    const y = (e.clientY ?? (e.touches && e.touches[0].clientY)) - rect.top;
+    const px = (x / rect.width) - 0.5;
+    const py = (y / rect.height) - 0.5;
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      card.style.transform = `rotateY(${px * 18}deg) rotateX(${-py * 18}deg) scale(1.04)`;
+    });
+  }
+  function reset(){
+    card.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+  }
+
+  stage.addEventListener('mousemove', handleMove);
+  stage.addEventListener('mouseleave', reset);
+  stage.addEventListener('touchmove', (e)=>{ handleMove(e); }, {passive:true});
+  stage.addEventListener('touchend', reset);
+
+  /* ---- retro hexagon attribute radar ---- */
+  (function drawRadar(){
+    const stats = [
+      { label: 'SYS', value: 81 },
+      { label: 'API', value: 72 },
+      { label: 'SQL', value: 73 },
+      { label: 'DBG', value: 83 },
+      { label: 'SCL', value: 74 },
+      { label: 'SEC', value: 72 }
+    ];
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.getElementById('radar');
+    const cx = 160, cy = 148, maxR = 108, maxVal = 99;
+    const n = stats.length;
+    const angleFor = i => (Math.PI * 2 * i / n) - Math.PI / 2;
+    const pointAt = (i, r) => [ cx + r * Math.cos(angleFor(i)), cy + r * Math.sin(angleFor(i)) ];
+
+    function el(tag, attrs){
+      const e = document.createElementNS(svgNS, tag);
+      for (const k in attrs) e.setAttribute(k, attrs[k]);
+      return e;
+    }
+
+    // grid rings (5 levels, like old career-mode pizza charts)
+    [0.2,0.4,0.6,0.8,1].forEach(frac => {
+      let pts = '';
+      for (let i=0;i<n;i++){
+        const [x,y] = pointAt(i, maxR*frac);
+        pts += `${x},${y} `;
+      }
+      svg.appendChild(el('polygon', {class:'grid-line', points: pts.trim()}));
+    });
+
+    // axis spokes + labels
+    stats.forEach((s,i) => {
+      const [x,y] = pointAt(i, maxR);
+      svg.appendChild(el('line', {class:'axis-line', x1:cx, y1:cy, x2:x, y2:y}));
+
+      const [lx,ly] = pointAt(i, maxR + 22);
+      const tag = el('text', {class:'lbl-tag', x:lx, y:ly - 5, 'text-anchor':'middle'});
+      tag.textContent = s.label;
+      svg.appendChild(tag);
+
+      const val = el('text', {class:'lbl-val', x:lx, y:ly + 9, 'text-anchor':'middle'});
+      val.textContent = s.value;
+      svg.appendChild(val);
+    });
+
+    // stat polygon
+    let statPts = '';
+    const nodeCoords = [];
+    stats.forEach((s,i) => {
+      const r = (s.value / maxVal) * maxR;
+      const [x,y] = pointAt(i, r);
+      statPts += `${x},${y} `;
+      nodeCoords.push([x,y]);
+    });
+    svg.appendChild(el('polygon', {class:'stat-poly', points: statPts.trim()}));
+    nodeCoords.forEach(([x,y]) => {
+      svg.appendChild(el('circle', {class:'stat-point', cx:x, cy:y, r:3.2}));
+    });
+  })();
+</script>
+
+</body>
+</html>
