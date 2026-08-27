@@ -6,7 +6,7 @@
 <title>Mohammed Bahey El-Deen — Player Card</title>
 <meta name="description" content="Backend-first engineer — Node.js, TypeScript, fintech microservices. Portfolio built as a FIFA Ultimate Team player card.">
 <meta name="theme-color" content="#060B18">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M2 2h28v22L16 31 2 24Z' fill='%23C89A4E'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' text-anchor='middle' fill='%23140F06'%3E76%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M2 2h28v22L16 31 2 24Z' fill='%23C89A4E'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' text-anchor='middle' fill='%23140F06'%3E80%3C/text%3E%3C/svg%3E">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Mohammed Bahey El-Deen — Player Card">
@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://hamshary99.github.io/portfolio/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="FIFA-style player card for Mohammed Bahey El-Deen, rated 76 CAM">
+<meta property="og:image:alt" content="FIFA-style player card for Mohammed Bahey El-Deen, rated 80 CAM">
 <meta name="twitter:image" content="https://hamshary99.github.io/portfolio/og-card.png">
 
 <script type="application/ld+json">
@@ -476,6 +476,21 @@
   #radar .stat-point{ fill:var(--gold); }
   #radar .lbl-tag{ font-size:10.5px; fill:var(--dim); letter-spacing:0.05em; }
   #radar .lbl-val{ font-size:11px; fill:var(--gold); font-weight:700; }
+
+  /* radar legend */
+  .legend-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:0.8rem;
+    margin-top:1.6rem;
+    background:var(--bg-panel-2);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:1.4rem;
+  }
+  .legend-item{ display:flex; align-items:baseline; gap:8px; }
+  .legend-item .k{ font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--cyan); font-weight:700; letter-spacing:0.1em; }
+  .legend-item .v{ color:var(--dim); font-size:0.8rem; }
 
   /* career path / loan spells */
   .fixture{
@@ -1002,9 +1017,9 @@
 
         <div class="card-top">
           <div class="rating-block">
-            <div class="ovr">76</div>
-            <div class="pos">CDM</div>
-            <div class="pot-tag">POT 84</div>
+            <div class="ovr">80</div>
+            <div class="pos">CAM</div>
+            <div class="pot-tag">POT 91</div>
             <div class="flag-crest">
               <div class="crest mono">FA</div>
               <svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Egypt">
@@ -1025,12 +1040,12 @@
 
         <div class="stats-plate">
           <div class="stat-grid">
-            <div class="stat"><span class="val">76</span><span class="lbl">SYS</span></div>
-            <div class="stat"><span class="val">77</span><span class="lbl">SEC</span></div>
-            <div class="stat"><span class="val">72</span><span class="lbl">API</span></div>
-            <div class="stat"><span class="val">75</span><span class="lbl">SCL</span></div>
-            <div class="stat"><span class="val">73</span><span class="lbl">SQL</span></div>
-            <div class="stat"><span class="val">82</span><span class="lbl">DBG</span></div>
+            <div class="stat"><span class="val">81</span><span class="lbl">SYS</span></div>
+            <div class="stat"><span class="val">75</span><span class="lbl">SEC</span></div>
+            <div class="stat"><span class="val">83</span><span class="lbl">API</span></div>
+            <div class="stat"><span class="val">79</span><span class="lbl">SCL</span></div>
+            <div class="stat"><span class="val">77</span><span class="lbl">SQL</span></div>
+            <div class="stat"><span class="val">85</span><span class="lbl">DBG</span></div>
           </div>
         </div>
       </div>
@@ -1066,12 +1081,12 @@
 
 <section class="panel">
   <div class="section-tag">01 · Scouting Report</div>
-  <h2 class="section-title">Reads the game from deep</h2>
+  <h2 class="section-title">An advanced playmaker</h2>
   <p class="report-text">
-    A deep-lying midfielder who reads the game before he touches it — holds the shape, screens the back four, and starts the move rather than finishing it. <strong>DBG is the standout attribute (82)</strong>: during his spell at Madkhol he traced a reconciliation drift across five microservices back to a single FX re-derivation bug, then rebuilt the rounding logic so the whole squad could rely on it. That single week is what the <strong>gold TOTW card</strong> above is for — earned for one stretch of form, not a season-long claim.
+    A backend-first full-stack engineer who orchestrates the entire play. Even if his frontend skills are a work in progress, he connects the end-to-end flow from database to UI, finds the gaps in complex systems, and delivers the final pass. <strong>DBG is the standout attribute (85)</strong>: during his spell at Madkhol he traced a reconciliation drift across five microservices back to a single FX re-derivation bug, then rebuilt the rounding logic so the whole squad could rely on it. That single week is what the <strong>gold TOTW card</strong> above is for — earned for one stretch of form, not a season-long claim.
   </p>
   <p class="report-text" style="margin-top:1rem;">
-    Not the finished product yet — <strong>POT 84</strong> reflects a player still early in his development curve, with more first-team minutes to come. Comfortable operating under regulatory pressure (OFAC, HIPAA, GDPR) without losing composure, and equally at home in the engine room: latency, load balancing and query optimisation are part of his routine rather than someone else's job. What's already there: clean architecture instincts, a habit of closing security gaps before they're exploited, and zero interest in shortcuts.
+    Not the finished product yet — <strong>POT 91</strong> reflects a player still early in his development curve, with more first-team minutes to come. Comfortable operating under regulatory pressure (OFAC, HIPAA, GDPR) without losing composure, and equally at home in the engine room: latency, load balancing and query optimisation are part of his routine rather than someone else's job. What's already there: clean architecture instincts, a habit of closing security gaps before they're exploited, zero interest in shortcuts, and a modern testing workflow where AI agents execute code against his Jest test cases.
   </p>
 
   <div class="radar-wrap">
@@ -1079,12 +1094,21 @@
       <div class="radar-title">Attribute Radar</div>
       <svg id="radar" viewBox="0 0 320 300"></svg>
     </div>
+    
+    <div class="legend-grid">
+      <div class="legend-item"><span class="k">SYS</span><span class="v">Systems Architecture</span></div>
+      <div class="legend-item"><span class="k">SEC</span><span class="v">Security & Compliance</span></div>
+      <div class="legend-item"><span class="k">API</span><span class="v">API Design</span></div>
+      <div class="legend-item"><span class="k">SCL</span><span class="v">Scalability</span></div>
+      <div class="legend-item"><span class="k">SQL</span><span class="v">Databases</span></div>
+      <div class="legend-item"><span class="k">DBG</span><span class="v">Debugging</span></div>
+    </div>
   </div>
 </section>
 
 <section class="panel">
   <div class="section-tag">02 · Career Path</div>
-  <h2 class="section-title">Loan spells</h2>
+  <h2 class="section-title">Internships & Contracts</h2>
 
   <div class="fixture">
     <div class="stamp">Contract</div>
@@ -1100,14 +1124,14 @@
     <div class="info">
       <div class="club">Madkhol <span class="mono" style="color:var(--dim); font-size:0.75rem;">— Saudi Fintech (Remote)</span></div>
       <div class="meta">Feb – May 2026 · TypeScript · Node.js · Redis · TypeORM · Performance</div>
-      <div class="desc">Traced a reconciliation drift to an FX re-derivation bug and shipped a provider-aware rounding framework standardized across the shared core package. Designed a Redis TTL subscription state machine that closed two gaps letting expired users keep investing. Flagged race conditions and CMA compliance risk on a force-liquidation cron PR before it shipped. Handled query optimisation and latency work across the services, alongside load balancing and the engineering standards applied to the shared core.</div>
+      <div class="desc">Traced a reconciliation drift to an FX re-derivation bug and shipped a provider-aware rounding framework standardized across the shared core package. Designed a Redis TTL subscription state machine that closed two gaps letting expired users keep investing. Flagged race conditions and CMA compliance risk on a force-liquidation cron PR before it shipped. Handled query optimisation and latency work—dropping read-heavy response times from 180ms to 5ms via proper caching and strategic indexing, while deliberately avoiding indexing write-heavy paths to preserve throughput.</div>
     </div>
   </div>
 </section>
 
 <section class="panel">
   <div class="section-tag">03 · Highlight Reel</div>
-  <h2 class="section-title">Man of the match</h2>
+  <h2 class="section-title">Projects</h2>
 
   <div class="reel">
     <div class="match-card">
@@ -1165,6 +1189,7 @@
     <div class="trait"><span class="dot"></span>Compliance-Minded</div>
     <div class="trait"><span class="dot"></span>Ships Under Pressure</div>
     <div class="trait"><span class="dot"></span>Tunes For Latency</div>
+    <div class="trait"><span class="dot"></span>AI-Augmented Testing</div>
   </div>
 
   <div class="stack">
@@ -1174,7 +1199,7 @@
     <div class="stack-row"><span class="stack-k">Databases</span><span class="stack-v">PostgreSQL &middot; MongoDB &middot; MySQL &middot; Redis &middot; TypeORM</span></div>
     <div class="stack-row"><span class="stack-k">Performance</span><span class="stack-v">Latency tuning &middot; Load balancing &middot; Query optimisation</span></div>
     <div class="stack-row"><span class="stack-k">Cloud &amp; DevOps</span><span class="stack-v">AWS Lambda &middot; AWS S3 &middot; Docker &middot; GitHub Actions</span></div>
-    <div class="stack-row"><span class="stack-k">Foundations</span><span class="stack-v">OOP &middot; Data structures &amp; algorithms &middot; Clean architecture &middot; Engineering best practices</span></div>
+    <div class="stack-row"><span class="stack-k">Foundations</span><span class="stack-v">OOP &middot; Data structures &amp; algorithms &middot; Clean architecture &middot; Testing (Jest) &middot; Engineering best practices</span></div>
   </div>
 </section>
 

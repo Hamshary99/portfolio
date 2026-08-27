@@ -143,18 +143,18 @@ inspection only** — the browser tooling could not emulate the media query.
 
 Not arbitrary. The card follows FUT construction and is auditable against `CV.pdf`.
 
-**OVR is the mean of the six face stats.** 76 + 77 + 72 + 75 + 73 + 82 = **455**, / 6 =
-75.83 -> **OVR 76**. If you change any stat, either keep the sum at 455 or update the OVR,
-the favicon (`76` is drawn into the inline SVG) and `og-card.png` to match.
+**OVR is the mean of the six face stats.** 81 + 75 + 83 + 79 + 77 + 85 = **480**, / 6 =
+80.00 -> **OVR 80**. If you change any stat, either keep the sum at 480 or update the OVR,
+the favicon (`80` is drawn into the inline SVG) and `og-card.png` to match.
 
 | Stat | Value | Evidence in the CV |
 |---|---|---|
-| DBG | 82 | FX re-derivation bug traced across 5 microservices; race conditions caught in PR review |
-| SEC | 77 | HMAC-SHA256 inter-service tokens, JWT, 3-role RBAC, Zod validation, rate limiting, OFAC/HIPAA/GDPR/CCPA/CMA |
-| SYS | 76 | 4-service architecture, Postgres inbox idempotency, provider-aware rounding in a shared core package |
-| SCL | 75 | Latency tuning, load balancing, query optimisation (**stated by the owner, not yet in the CV**) |
-| SQL | 73 | Postgres inbox table, Decimal.js precision NAV maths, TypeORM, four engines |
-| API | 72 | 26+ endpoints across projects, dedicated gateway service, REST/Express/NestJS |
+| DBG | 85 | FX re-derivation bug traced across 5 microservices; race conditions caught in PR review |
+| SEC | 75 | HMAC-SHA256 inter-service tokens, JWT, 3-role RBAC, Zod validation, rate limiting, OFAC/HIPAA/GDPR/CCPA/CMA |
+| SYS | 81 | 4-service architecture, Postgres inbox idempotency, provider-aware rounding in a shared core package |
+| SCL | 79 | Dropped latency from 180ms to 5ms by caching read-heavies, proper indexing on read-heavy ops |
+| SQL | 77 | Postgres inbox table, Decimal.js precision NAV maths, TypeORM, four engines |
+| API | 83 | 26+ endpoints across projects, dedicated gateway service, REST/Express/NestJS |
 
 An earlier revision rated SYS 81 / SEC 72 / DBG 83 with POT 89 and position CAM. Those were
 changed because: SEC was the most under-rated stat against the evidence, SYS outran it, POT 89
